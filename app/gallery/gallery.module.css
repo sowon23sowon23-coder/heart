@@ -1,0 +1,69 @@
+.page{
+  padding: 18px 14px 40px;
+}
+
+.title{
+  font-size: 28px;
+  font-weight: 900;
+  margin: 10px 0 14px;
+}
+
+.stage{
+  width: 100%;
+}
+
+.grid{
+  display: grid;
+  gap: 18px;
+  justify-content: center;
+  align-items: start;
+
+  /* 모바일 기본 */
+  grid-template-columns: repeat(2, 150px);
+}
+
+/* 2 columns: shift even rows (items 3-4, 7-8, ...) slightly left */
+.grid > :nth-child(4n-1),
+.grid > :nth-child(4n){
+  transform: translateX(-12px);
+}
+
+@media (min-width: 520px){
+  .grid{
+    grid-template-columns: repeat(3, 150px);
+  }
+
+  /* 3 columns: shift even rows (items 4-6, 10-12, ...) */
+  .grid > :nth-child(6n-2),
+  .grid > :nth-child(6n-1),
+  .grid > :nth-child(6n){
+    transform: translateX(-12px);
+  }
+
+  .grid > :nth-child(4n-1),
+  .grid > :nth-child(4n){
+    transform: none;
+  }
+}
+
+@media (min-width: 900px){
+  .grid{
+    grid-template-columns: repeat(5, 150px);
+    gap: 22px;
+  }
+
+  /* 5 columns: shift even rows (items 6-10, 16-20, ...) */
+  .grid > :nth-child(10n-4),
+  .grid > :nth-child(10n-3),
+  .grid > :nth-child(10n-2),
+  .grid > :nth-child(10n-1),
+  .grid > :nth-child(10n){
+    transform: translateX(-12px);
+  }
+
+  .grid > :nth-child(6n-2),
+  .grid > :nth-child(6n-1),
+  .grid > :nth-child(6n){
+    transform: none;
+  }
+}
