@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Navigation from "../components/Navigation";
 import styles from "./page.module.css";
 import { supabase, BUCKET_NAME } from "../lib/supabaseClient";
@@ -142,9 +143,14 @@ export default function UploadPage() {
 
           {error ? <div className={styles.error}>{error}</div> : null}
 
-          <button className={styles.btn} onClick={handleUpload} disabled={loading}>
-            {loading ? "Uploading..." : "Upload to Gallery"}
-          </button>
+          <div className={styles.actionRow}>
+            <button className={styles.btn} onClick={handleUpload} disabled={loading}>
+              {loading ? "Uploading..." : "Upload to Gallery"}
+            </button>
+            <Link className={styles.adminBtn} href="/admin">
+              Admin Page
+            </Link>
+          </div>
         </section>
       </main>
     </>
