@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navigation from "../../components/Navigation";
 import HeartFlipCard from "../../components/HeartFlipCard";
 import DetailModal from "../../components/DetailModal";
+import AdminLoginModal from "../../components/AdminLoginModal";
 import styles from "./gallery.module.css";
 import { supabase } from "../../lib/supabaseClient";
 
@@ -13,6 +14,7 @@ export default function GalleryPage() {
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [adminOpen, setAdminOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -40,9 +42,13 @@ export default function GalleryPage() {
     setOpen(true);
   }
 
+  function openAdmin() {
+    setAdminOpen(true);
+  }
+
   return (
     <>
-      <Navigation />
+      <Navigation onAdminClick={openAdmin} />
 
       <main className={styles.page}>
         <h1 className={styles.title}>Gallery</h1>
@@ -63,6 +69,7 @@ export default function GalleryPage() {
       </main>
 
       <DetailModal open={open} onClose={() => setOpen(false)} item={selected} />
+      <AdminLoginModal open={adminOpen} onClose={() => setAdminOpen(false)} />
     </>
   );
 }
