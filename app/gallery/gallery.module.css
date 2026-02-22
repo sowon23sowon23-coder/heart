@@ -1,4 +1,4 @@
-.page{
+﻿.page{
   padding: 18px 14px 40px;
 }
 
@@ -13,14 +13,14 @@
   margin: 8px 0 12px;
   color: var(--yg-purple-700);
   font-weight: 700;
-.}
+}
 .grid{
   display: grid;
   gap: 18px;
   justify-content: center;
   align-items: start;
 
-  /* 모바일 기본 */
+  /* 紐⑤컮??湲곕낯 */
   grid-template-columns: repeat(2, 150px);
 }
 
