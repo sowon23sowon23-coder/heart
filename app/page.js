@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Navigation from "../components/Navigation";
 import styles from "./page.module.css";
 import { supabase, BUCKET_NAME } from "../lib/supabaseClient";
 
@@ -75,7 +74,6 @@ export default function UploadPage() {
 
   return (
     <>
-      <Navigation />
       <main className={styles.page}>
         <section className={styles.card}>
           <div className={styles.badge}>Create Heart Card</div>
@@ -147,9 +145,7 @@ export default function UploadPage() {
             <button className={styles.btn} onClick={handleUpload} disabled={loading}>
               {loading ? "Uploading..." : "Upload to Gallery"}
             </button>
-            <Link className={styles.adminBtn} href="/admin">
-              Admin Page
-            </Link>
+            {/* Admin Page link removed — use gear button in header */}
           </div>
         </section>
       </main>
