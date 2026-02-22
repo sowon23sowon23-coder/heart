@@ -1,0 +1,24 @@
+.container{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.heart{
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--yg-pink-400), var(--yg-pink-600));
+  transform: rotate(-25deg);
+  clip-path: path('M50 84C50 84 4 58 4 28C4 12 17 0 32 0C41 0 48 5 50 13C52 5 59 0 68 0C83 0 96 12 96 28C96 58 50 84 50 84Z');
+  opacity: 0.95;
+  animation: floatUp 6s ease-in-out infinite;
+  filter: drop-shadow(0 6px 10px rgba(255,92,168,.18));
+}
+
+@keyframes floatUp{
+  0%{ transform: translateY(0) scale(0.96) rotate(-20deg); opacity: .95 }
+  50%{ transform: translateY(-16px) scale(1.05) rotate(-30deg); opacity: 1 }
+  100%{ transform: translateY(0) scale(0.96) rotate(-20deg); opacity: .95 }
+}

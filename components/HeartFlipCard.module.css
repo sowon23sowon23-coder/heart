@@ -95,10 +95,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6b1e52;
+  color: var(--yg-purple-700);
   background:
     radial-gradient(circle at 24% 24%, rgba(255,255,255,.8), rgba(255,255,255,0) 42%),
-    linear-gradient(155deg, #ffd4ea 0%, #ffc1dd 48%, #ffb1d5 100%);
+    linear-gradient(155deg, var(--yg-pink-400) 0%, var(--yg-pink-400) 48%, var(--yg-pink-400) 100%);
   overflow: hidden;
 
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath fill='black' d='M50 84C50 84 4 58 4 28C4 12 17 0 32 0C41 0 48 5 50 13C52 5 59 0 68 0C83 0 96 12 96 28C96 58 50 84 50 84Z'/%3E%3C/svg%3E");

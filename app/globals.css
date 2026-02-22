@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&family=Nunito:wght@300;700&display=swap');
+
+:root{
+	/* Yogurtland-inspired palette */
+	--yg-pink-600: #ff5ca8;
+	--yg-pink-400: #ffc1dd;
+	--yg-purple-700: #6f2050;
+	--yg-accent: #2acfcf;
+	--yg-bg-from: #fff7fb;
+	--yg-bg-to: #fff4f9;
+	--yg-card-shadow: 0 8px 18px rgba(165,50,111,.18);
+	--yg-radius-pill: 999px;
+	--yg-text: #3d1336;
+	--yg-muted: rgba(60,20,40,.65);
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: 'Poppins', 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	margin: 0;
+	color: var(--yg-text);
+	background: linear-gradient(180deg, var(--yg-bg-from) 0%, var(--yg-bg-to) 100%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility */
+.yg-pill{
+	border-radius: var(--yg-radius-pill);
+}
+
+.yg-btn{
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 8px 14px;
+	border-radius: var(--yg-radius-pill);
+	font-weight: 800;
+	cursor: pointer;
+}
+
+/* Accessibility tweaks */
+img{display:block;max-width:100%}
+
