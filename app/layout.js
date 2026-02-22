@@ -1,4 +1,5 @@
 import "./globals.css";
+import TopNav from "../components/TopNav";
 
 export const metadata = {
   title: "Heart Flip Gallery",
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <TopNav>{children}</TopNav>
+      </body>
     </html>
   );
 }
