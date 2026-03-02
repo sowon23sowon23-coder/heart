@@ -1,8 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { supabase, BUCKET_NAME } from "../lib/supabaseClient";
 
@@ -14,11 +13,29 @@ export default function UploadPage() {
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
+  const fileInputRef = useRef(null);
 
-  const previewUrl = useMemo(() => {
-    if (!file) return "";
-    return URL.createObjectURL(file);
-  }, [file]);
+  function handleFileChange(e) {
+    const nextFile = e.target.files?.[0] || null;
+    setFile(nextFile);
+
+    if (!nextFile) {
+      setPreviewUrl("");
+      return;
+    }
+
+    setError("");
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPreviewUrl(typeof reader.result === "string" ? reader.result : "");
+    };
+    reader.onerror = () => {
+      setPreviewUrl("");
+      setError("Failed to load preview image.");
+    };
+    reader.readAsDataURL(nextFile);
+  }
 
   function validate() {
     if (!file) return "Please select a photo.";
@@ -83,22 +100,33 @@ export default function UploadPage() {
           </p>
 
           <div className={styles.grid}>
-            <label className={styles.field}>
-              <span className={styles.label}>Photo</span>
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="photo-upload">
+                Photo
+              </label>
               <div className={styles.fileRow}>
                 <input
                   id="photo-upload"
+                  ref={fileInputRef}
                   className={styles.fileInput}
                   type="file"
-                  accept="image/*"
-                  onChange={(e) => setFile(e.target.files?.[0] || null)}
+                  accept="image/*,image/heic,image/heif"
+                  capture="environment"
+                  onClick={(e) => {
+                    e.currentTarget.value = "";
+                  }}
+                  onChange={handleFileChange}
                 />
-                <label htmlFor="photo-upload" className={styles.fileBtn}>
+                <button
+                  type="button"
+                  className={styles.fileBtn}
+                  onClick={() => fileInputRef.current?.click()}
+                >
                   Choose File
-                </label>
+                </button>
                 <span className={styles.fileName}>{file ? file.name : "No file selected"}</span>
               </div>
-            </label>
+            </div>
 
             <label className={styles.field}>
               <span className={styles.label}>Nickname</span>
