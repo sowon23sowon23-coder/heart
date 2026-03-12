@@ -30,9 +30,9 @@
 }
 
 .brand{
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Poppins", system-ui, sans-serif;
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   color: var(--yg-berry-800);
 }
