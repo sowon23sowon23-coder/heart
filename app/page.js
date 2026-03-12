@@ -98,37 +98,11 @@ export default function UploadPage() {
       </div>
 
       <section className={styles.shell}>
-        <div className={styles.hero}>
-          <div className={styles.badge}>Flip Heart Upload</div>
-          <h1 className={styles.title}>Turn one Yogurtland moment into a shared heart.</h1>
-          <p className={styles.sub}>
-            Add a photo, nickname, and a short note. Your memory joins the live gallery shown in
-            store.
-          </p>
-
-          <div className={styles.chips}>
-            <span className={styles.chip}>Mobile-first</span>
-            <span className={styles.chip}>Cute and quick</span>
-            <span className={styles.chip}>Live gallery wall</span>
-          </div>
-
-          <div className={styles.storyCard}>
-            <div className={styles.storyIcon}>♡</div>
-            <div>
-              <strong className={styles.storyTitle}>A little memory wall for the Yogurtland community</strong>
-              <p className={styles.storyText}>
-                Choose a favorite photo and write one line that feels warm, playful, and easy to
-                read on the big screen.
-              </p>
-            </div>
-          </div>
-        </div>
-
         <section className={styles.card}>
           <div className={styles.formHeader}>
             <div>
-              <div className={styles.sectionEyebrow}>Step by step</div>
-              <h2 className={styles.cardTitle}>Create your heart card</h2>
+              <div className={styles.sectionEyebrow}>Flip Heart Upload</div>
+              <h1 className={styles.cardTitle}>Make your heart card</h1>
             </div>
             <div className={styles.counterPill}>
               <span>{description.length}</span>
@@ -142,7 +116,7 @@ export default function UploadPage() {
                 <label className={styles.label} htmlFor="photo-upload">
                   1. Upload a photo
                 </label>
-                <span className={styles.helper}>Best with a bright close-up shot</span>
+                <span className={styles.helper}>Bright close-up works best.</span>
               </div>
 
               <div
@@ -213,16 +187,13 @@ export default function UploadPage() {
                   maxLength={30}
                 />
                 <span className={styles.helper}>
-                  Keep it short so it reads beautifully on the gallery wall.
+                  Keep it short and clear.
                 </span>
               </label>
 
               <div className={styles.tipBox}>
-                <strong>What happens next</strong>
-                <p>
-                  After upload, your post moves straight into the Flip Heart gallery with
-                  everyone else&apos;s memories.
-                </p>
+                <strong>Next</strong>
+                <p>Your post goes straight to the gallery.</p>
               </div>
             </div>
           </div>
@@ -233,9 +204,7 @@ export default function UploadPage() {
             <button className={styles.btn} onClick={handleUpload} disabled={loading}>
               {loading ? "Sending to the heart wall..." : "Share to Flip Heart"}
             </button>
-            <p className={styles.rewardText}>
-              Your memory will appear in the live gallery right after upload.
-            </p>
+            <p className={styles.rewardText}>Shows up in the gallery right away.</p>
           </div>
         </section>
       </section>
