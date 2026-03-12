@@ -137,7 +137,6 @@ export default function UploadPage() {
                   className={styles.fileInput}
                   type="file"
                   accept="image/*,image/heic,image/heif"
-                  capture="environment"
                   onClick={(e) => {
                     e.currentTarget.value = "";
                   }}
@@ -186,9 +185,7 @@ export default function UploadPage() {
                   placeholder="My happiest yogurt run"
                   maxLength={30}
                 />
-                <span className={styles.helper}>
-                  Keep it short and clear.
-                </span>
+                <span className={styles.helper}>Keep it short and clear.</span>
               </label>
 
               <div className={styles.tipBox}>
