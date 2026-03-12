@@ -6,10 +6,14 @@ import styles from "./Navigation.module.css";
 
 export default function Navigation({ onAdminClick }) {
   const pathname = usePathname();
+  const isGallery = pathname === "/gallery";
 
   return (
-    <header className={styles.header}>
-      <div className={styles.brand}>Heart Gallery</div>
+    <header className={`${styles.header} ${isGallery ? styles.galleryHeader : ""}`}>
+      <div className={styles.brandBlock}>
+        <div className={styles.brandEyebrow}>Yogurtland Community Wall</div>
+        <div className={styles.brand}>Flip Heart</div>
+      </div>
       <nav className={styles.nav}>
         <Link
           className={`${styles.linkBtn} ${pathname === "/" ? styles.active : ""}`}

@@ -1,24 +1,58 @@
-.container{
+.container {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
+  z-index: 0;
 }
 
-.heart{
+.heart {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  background: linear-gradient(180deg, var(--yg-pink-400), var(--yg-pink-600));
-  transform: rotate(-25deg);
-  clip-path: path('M50 84C50 84 4 58 4 28C4 12 17 0 32 0C41 0 48 5 50 13C52 5 59 0 68 0C83 0 96 12 96 28C96 58 50 84 50 84Z');
-  opacity: 0.95;
-  animation: floatUp 6s ease-in-out infinite;
-  filter: drop-shadow(0 6px 10px rgba(255,92,168,.18));
+  opacity: 0.55;
 }
 
-@keyframes floatUp{
-  0%{ transform: translateY(0) scale(0.96) rotate(-20deg); opacity: .95 }
-  50%{ transform: translateY(-16px) scale(1.05) rotate(-30deg); opacity: 1 }
-  100%{ transform: translateY(0) scale(0.96) rotate(-20deg); opacity: .95 }
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.heart::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 84C50 84 4 58 4 28C4 12 17 0 32 0C41 0 48 5 50 13C52 5 59 0 68 0C83 0 96 12 96 28C96 58 50 84 50 84Z' fill='%23ffc6db'/%3E%3C/svg%3E");
+  filter: blur(0.2px);
+}
+
+.heart::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath d='M50 84C50 84 4 58 4 28C4 12 17 0 32 0C41 0 48 5 50 13C52 5 59 0 68 0C83 0 96 12 96 28C96 58 50 84 50 84Z' fill='none' stroke='%23fff7fb' stroke-width='3'/%3E%3C/svg%3E");
+  opacity: 0.82;
+}
+
+.heart {
+  animation: floatHeart ease-in-out infinite;
+  filter: drop-shadow(0 8px 18px rgba(140, 47, 101, 0.14));
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9) rotate(-8deg);
+    opacity: 0.18;
+  }
+
+  25% {
+    opacity: 0.44;
+  }
+
+  50% {
+    transform: translate3d(14px, -26px, 0) scale(1) rotate(8deg);
+    opacity: 0.58;
+  }
+
+  100% {
+    transform: translate3d(-10px, -54px, 0) scale(0.92) rotate(-4deg);
+    opacity: 0.14;
+  }
 }

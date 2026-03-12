@@ -63,7 +63,7 @@ export default function HeartFlipCard({ item, onOpen }) {
           <div className={styles.heartWrap}>
             <div className={styles.heartBack}>
               <div className={styles.backInner}>
-                <div className={styles.logo}>LOVE</div>
+                <div className={styles.logo}>FLIP HEART</div>
                 <div className={styles.nick}>{item.nickname}</div>
                 <div className={styles.desc}>{item.description}</div>
               </div>

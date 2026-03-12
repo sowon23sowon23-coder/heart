@@ -90,21 +90,73 @@ export default function UploadPage() {
   }
 
   return (
-    <>
-      <main className={styles.page}>
-        <section className={styles.card}>
-          <div className={styles.badge}>Create Heart Card</div>
-          <h1 className={styles.title}>Share Your Love</h1>
+    <main className={styles.page}>
+      <div className={styles.backdrop} aria-hidden="true">
+        <div className={styles.glowA} />
+        <div className={styles.glowB} />
+        <div className={styles.glowC} />
+      </div>
+
+      <section className={styles.shell}>
+        <div className={styles.hero}>
+          <div className={styles.badge}>Flip Heart Upload</div>
+          <h1 className={styles.title}>Turn one Yogurtland moment into a shared heart.</h1>
           <p className={styles.sub}>
-            Add your photo, nickname, and a short message. It will appear as a flipping heart in the gallery.
+            Add a photo, nickname, and a short note. Your memory joins the live gallery shown in
+            store.
           </p>
 
+          <div className={styles.chips}>
+            <span className={styles.chip}>Mobile-first</span>
+            <span className={styles.chip}>Cute and quick</span>
+            <span className={styles.chip}>Live gallery wall</span>
+          </div>
+
+          <div className={styles.storyCard}>
+            <div className={styles.storyIcon}>♡</div>
+            <div>
+              <strong className={styles.storyTitle}>A little memory wall for the Yogurtland community</strong>
+              <p className={styles.storyText}>
+                Choose a favorite photo and write one line that feels warm, playful, and easy to
+                read on the big screen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <section className={styles.card}>
+          <div className={styles.formHeader}>
+            <div>
+              <div className={styles.sectionEyebrow}>Step by step</div>
+              <h2 className={styles.cardTitle}>Create your heart card</h2>
+            </div>
+            <div className={styles.counterPill}>
+              <span>{description.length}</span>
+              <small>/30</small>
+            </div>
+          </div>
+
           <div className={styles.grid}>
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="photo-upload">
-                Photo
-              </label>
-              <div className={styles.fileRow}>
+            <div className={styles.uploadPanel}>
+              <div className={styles.fieldTop}>
+                <label className={styles.label} htmlFor="photo-upload">
+                  1. Upload a photo
+                </label>
+                <span className={styles.helper}>Best with a bright close-up shot</span>
+              </div>
+
+              <div
+                className={`${styles.uploadDropzone} ${previewUrl ? styles.hasPreview : ""}`}
+                onClick={() => fileInputRef.current?.click()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    fileInputRef.current?.click();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <input
                   id="photo-upload"
                   ref={fileInputRef}
@@ -117,66 +169,76 @@ export default function UploadPage() {
                   }}
                   onChange={handleFileChange}
                 />
-                <button
-                  type="button"
-                  className={styles.fileBtn}
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  Choose File
-                </button>
-                <span className={styles.fileName}>{file ? file.name : "No file selected"}</span>
+
+                {previewUrl ? (
+                  <>
+                    <img className={styles.previewImg} src={previewUrl} alt="preview" />
+                    <div className={styles.previewOverlay}>
+                      <span className={styles.fileBtn}>Change photo</span>
+                      <span className={styles.fileName}>{file?.name}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className={styles.emptyState}>
+                    <div className={styles.emptyIcon}>❤</div>
+                    <div className={styles.emptyTitle}>Tap to add your Yogurtland photo</div>
+                    <div className={styles.emptyText}>
+                      Camera and gallery uploads both work well on mobile.
+                    </div>
+                    <span className={styles.fileBtn}>Choose photo</span>
+                  </div>
+                )}
               </div>
             </div>
 
-            <label className={styles.field}>
-              <span className={styles.label}>Nickname</span>
-              <input
-                className={styles.input}
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-                placeholder="e.g. sowon"
-                maxLength={20}
-              />
-            </label>
+            <div className={styles.fields}>
+              <label className={styles.field}>
+                <span className={styles.label}>2. Nickname</span>
+                <input
+                  className={styles.input}
+                  value={nickname}
+                  onChange={(e) => setNickname(e.target.value)}
+                  placeholder="e.g. Berry swirl fan"
+                  maxLength={20}
+                />
+              </label>
 
-            <label className={styles.field}>
-              <span className={styles.label}>
-                Description <span className={styles.hint}>({description.length}/30)</span>
-              </span>
-              <input
-                className={styles.input}
-                value={description}
-                onChange={(e) => setDescription(e.target.value.slice(0, 30))}
-                placeholder="Tell us about your love"
-                maxLength={30}
-              />
-            </label>
-          </div>
+              <label className={styles.field}>
+                <span className={styles.label}>3. Short message</span>
+                <input
+                  className={styles.input}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value.slice(0, 30))}
+                  placeholder="My happiest yogurt run"
+                  maxLength={30}
+                />
+                <span className={styles.helper}>
+                  Keep it short so it reads beautifully on the gallery wall.
+                </span>
+              </label>
 
-          <div className={styles.previewWrap}>
-            <div className={styles.previewTitle}>Preview</div>
-            {previewUrl ? (
-              <img className={styles.previewImg} src={previewUrl} alt="preview" />
-            ) : (
-              <div className={styles.previewEmpty}>Your selected photo will appear here.</div>
-            )}
-          </div>
-
-          <div className={styles.tipBox}>
-            <strong>Tips</strong>
-            <p>Use a close-up photo and a short message for the best gallery result.</p>
+              <div className={styles.tipBox}>
+                <strong>What happens next</strong>
+                <p>
+                  After upload, your post moves straight into the Flip Heart gallery with
+                  everyone else&apos;s memories.
+                </p>
+              </div>
+            </div>
           </div>
 
           {error ? <div className={styles.error}>{error}</div> : null}
 
           <div className={styles.actionRow}>
             <button className={styles.btn} onClick={handleUpload} disabled={loading}>
-              {loading ? "Uploading..." : "Upload to Gallery"}
+              {loading ? "Sending to the heart wall..." : "Share to Flip Heart"}
             </button>
-            {/* Admin Page link removed — use gear button in header */}
+            <p className={styles.rewardText}>
+              Your memory will appear in the live gallery right after upload.
+            </p>
           </div>
         </section>
-      </main>
-    </>
+      </section>
+    </main>
   );
 }

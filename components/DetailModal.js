@@ -9,7 +9,10 @@ export default function DetailModal({ open, onClose, item }) {
     <div onMouseDown={onClose} className={styles.overlay}>
       <div onMouseDown={(e) => e.stopPropagation()} className={styles.modal}>
         <div className={styles.header}>
-          <div className={styles.title}>{item.nickname}</div>
+          <div>
+            <div className={styles.eyebrow}>Flip Heart memory</div>
+            <div className={styles.title}>{item.nickname}</div>
+          </div>
           <button onClick={onClose} className={styles.closeBtn}>
             Close
           </button>

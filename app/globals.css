@@ -1,48 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&family=Nunito:wght@300;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700;800&display=swap");
 
-:root{
-	/* Yogurtland-inspired palette */
-	--yg-pink-600: #ff5ca8;
-	--yg-pink-400: #ffc1dd;
-	--yg-purple-700: #6f2050;
-	--yg-accent: #2acfcf;
-	--yg-bg-from: #fff7fb;
-	--yg-bg-to: #fff4f9;
-	--yg-card-shadow: 0 8px 18px rgba(165,50,111,.18);
-	--yg-radius-pill: 999px;
-	--yg-text: #3d1336;
-	--yg-muted: rgba(60,20,40,.65);
+:root {
+  --yg-berry-900: #4d1737;
+  --yg-berry-800: #6b214d;
+  --yg-berry-700: #8c2f65;
+  --yg-coral-500: #ff7db2;
+  --yg-coral-400: #ffb4d0;
+  --yg-coral-300: #ffd7e7;
+  --yg-cream-100: #fff8f4;
+  --yg-cream-200: #fff2ea;
+  --yg-mint-300: #bff2e8;
+  --yg-gold-200: #ffe1b8;
+  --yg-surface: rgba(255, 255, 255, 0.72);
+  --yg-surface-strong: rgba(255, 255, 255, 0.9);
+  --yg-border: rgba(140, 47, 101, 0.16);
+  --yg-border-strong: rgba(140, 47, 101, 0.26);
+  --yg-shadow-soft: 0 18px 45px rgba(154, 57, 107, 0.12);
+  --yg-shadow-card: 0 24px 60px rgba(134, 40, 89, 0.16);
+  --yg-shadow-strong: 0 26px 80px rgba(99, 26, 66, 0.22);
+  --yg-text: #42172f;
+  --yg-text-muted: rgba(66, 23, 47, 0.7);
+  --yg-radius-xl: 32px;
+  --yg-radius-lg: 24px;
+  --yg-radius-md: 18px;
+  --yg-radius-pill: 999px;
 }
 
-html, body {
-	height: 100%;
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-	font-family: 'Poppins', 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-	margin: 0;
-	color: var(--yg-text);
-	background: linear-gradient(180deg, var(--yg-bg-from) 0%, var(--yg-bg-to) 100%);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  color: var(--yg-text);
+  font-family: "Outfit", system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 217, 232, 0.96), transparent 26%),
+    radial-gradient(circle at 88% 8%, rgba(191, 242, 232, 0.66), transparent 20%),
+    radial-gradient(circle at 50% 100%, rgba(255, 225, 184, 0.5), transparent 22%),
+    linear-gradient(180deg, #fffaf7 0%, #fff6fa 38%, #fff1f7 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Utility */
-.yg-pill{
-	border-radius: var(--yg-radius-pill);
+main {
+  position: relative;
 }
 
-.yg-btn{
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	padding: 8px 14px;
-	border-radius: var(--yg-radius-pill);
-	font-weight: 800;
-	cursor: pointer;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
-/* Accessibility tweaks */
-img{display:block;max-width:100%}
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(255, 125, 178, 0.22);
+}
 
