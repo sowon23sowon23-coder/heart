@@ -86,7 +86,7 @@ export default function UploadPage() {
       ]);
       if (dbErr) throw dbErr;
 
-      router.push("/gallery");
+      router.push(`/gallery?store=${storeCode}`);
     } catch (e) {
       setError(e?.message || "Upload failed.");
       console.error(e);
