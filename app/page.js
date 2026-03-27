@@ -199,7 +199,12 @@ export default function UploadPage() {
               </label>
 
               <label className={styles.field}>
-                <span className={styles.label}>4. Short message</span>
+                <span className={styles.label}>
+                  4. Short message{" "}
+                  <span className={description.length >= 30 ? styles.countOver : styles.countMuted}>
+                    ({description.length}/30)
+                  </span>
+                </span>
                 <input
                   className={styles.input}
                   value={description}

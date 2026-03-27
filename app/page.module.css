@@ -125,6 +125,18 @@
   color: var(--yg-text);
 }
 
+.countMuted {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(66, 23, 47, 0.45);
+}
+
+.countOver {
+  font-size: 12px;
+  font-weight: 700;
+  color: #c0273e;
+}
+
 .helper {
   font-size: 12px;
   color: rgba(66, 23, 47, 0.58);
