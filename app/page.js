@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { supabase, BUCKET_NAME } from "../lib/supabaseClient";
+import { STORES } from "../lib/stores";
 
 export default function UploadPage() {
   const router = useRouter();
@@ -11,6 +12,7 @@ export default function UploadPage() {
   const [file, setFile] = useState(null);
   const [nickname, setNickname] = useState("");
   const [description, setDescription] = useState("");
+  const [storeCode, setStoreCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
@@ -38,6 +40,7 @@ export default function UploadPage() {
   }
 
   function validate() {
+    if (!storeCode) return "Please select your store.";
     if (!file) return "Please select a photo.";
     if (!nickname.trim()) return "Please enter a nickname.";
     if (!description.trim()) return "Please enter a short description.";
@@ -71,11 +74,14 @@ export default function UploadPage() {
       const imageUrl = pub?.publicUrl;
       if (!imageUrl) throw new Error("Failed to create a public URL.");
 
+      const selectedStore = STORES.find((s) => s.code === storeCode);
       const { error: dbErr } = await supabase.from("hearts").insert([
         {
           nickname: nickname.trim(),
           description: description.trim(),
           image_url: imageUrl,
+          store_code: storeCode || null,
+          store_name: selectedStore?.name || null,
         },
       ]);
       if (dbErr) throw dbErr;
@@ -166,7 +172,23 @@ export default function UploadPage() {
 
             <div className={styles.fields}>
               <label className={styles.field}>
-                <span className={styles.label}>2. Nickname</span>
+                <span className={styles.label}>1. Select your store</span>
+                <select
+                  className={styles.input}
+                  value={storeCode}
+                  onChange={(e) => setStoreCode(e.target.value)}
+                >
+                  <option value="">-- Select a store --</option>
+                  {STORES.map((s) => (
+                    <option key={s.code} value={s.code}>
+                      {s.name} [{s.code}]
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className={styles.field}>
+                <span className={styles.label}>3. Nickname</span>
                 <input
                   className={styles.input}
                   value={nickname}
@@ -177,7 +199,7 @@ export default function UploadPage() {
               </label>
 
               <label className={styles.field}>
-                <span className={styles.label}>3. Short message</span>
+                <span className={styles.label}>4. Short message</span>
                 <input
                   className={styles.input}
                   value={description}
