@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import HeartFlipCard from "../../components/HeartFlipCard";
 import DetailModal from "../../components/DetailModal";
@@ -9,7 +9,7 @@ import styles from "./gallery.module.css";
 import { supabase } from "../../lib/supabaseClient";
 import { STORES } from "../../lib/stores";
 
-export default function GalleryPage() {
+function GalleryContent() {
   const searchParams = useSearchParams();
   const storeParam = searchParams.get("store") || "";
 
@@ -106,5 +106,13 @@ export default function GalleryPage() {
 
       <DetailModal open={open} onClose={() => setOpen(false)} item={selected} />
     </>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: 40, textAlign: "center" }}>Loading...</div>}>
+      <GalleryContent />
+    </Suspense>
   );
 }
