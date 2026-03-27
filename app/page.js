@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import { supabase, BUCKET_NAME } from "../lib/supabaseClient";
 import { STORES } from "../lib/stores";
+import StoreSelect from "../components/StoreSelect";
 
 export default function UploadPage() {
   const router = useRouter();
@@ -171,21 +172,14 @@ export default function UploadPage() {
             </div>
 
             <div className={styles.fields}>
-              <label className={styles.field}>
+              <div className={styles.field}>
                 <span className={styles.label}>1. Select your store</span>
-                <select
-                  className={styles.input}
+                <StoreSelect
                   value={storeCode}
-                  onChange={(e) => setStoreCode(e.target.value)}
-                >
-                  <option value="">-- Select a store --</option>
-                  {STORES.map((s) => (
-                    <option key={s.code} value={s.code}>
-                      {s.name} [{s.code}]
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  onChange={setStoreCode}
+                  disabled={loading}
+                />
+              </div>
 
               <label className={styles.field}>
                 <span className={styles.label}>3. Nickname</span>
